@@ -15,7 +15,7 @@ import {LoginContext,ModeDataContext} from './helpers/LoginContext'
 import { Devices } from './Api';
 
 function App() {
-
+  axios.defaults.baseURL = `http://163.47.115.230:30000/`;
   axios.interceptors.request.use(
     config =>{
       console.log("axios",config);

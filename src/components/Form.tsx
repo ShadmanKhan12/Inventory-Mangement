@@ -29,7 +29,7 @@ export default function Form() {
  const handleSubmit = (event:any) =>{
     event.preventDefault();
     logInApi(email,password).then(res=>{
-        if(res.user){
+        if(res){
            setLogIn(true)
            console.log("login succsessfull")
         }
