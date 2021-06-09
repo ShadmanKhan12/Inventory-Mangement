@@ -1,4 +1,4 @@
-import React, { Component ,useContext } from 'react'
+import React, { Component ,useContext,useEffect } from 'react'
 import {logInApi} from '../Api'
 import { useHistory } from 'react-router-dom';
 import { Redirect } from 'react-router'
@@ -24,8 +24,17 @@ export default function Form() {
 
   const [email,setUserEmail] = React.useState<string>("");
   const [password,setPassword] = React.useState<string>("");
-
   const {isLoggedIn,setLogIn} = useContext(LoginContext);
+
+  const history = useHistory();
+  useEffect(() => {
+    if(isLoggedIn){
+      history.push("/modeltype");
+    }
+    return () => {
+      
+    }
+  }, [isLoggedIn])
  const handleSubmit = (event:any) =>{
     event.preventDefault();
     logInApi(email,password).then(res=>{
