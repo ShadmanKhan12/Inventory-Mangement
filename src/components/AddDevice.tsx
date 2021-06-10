@@ -56,7 +56,13 @@ export default function AddDevice() {
     const handleSubmit = (evt: any) => {
         evt.preventDefault();
         addDeviceApi(brandId, name, typeId, comment).then(response => {
-            console.log(response);
+            if(response){
+                setBrandId("");
+                setName("");
+                setTypeId(0);
+                setComment("");
+                alert("Posted");
+            }
         })
     }
     const handleTypeIdChange = (evt: any) => {
