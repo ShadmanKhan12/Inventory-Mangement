@@ -11,57 +11,41 @@ import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Checkbox from '@material-ui/core/Checkbox';
 import { Devices } from '../Api';
 import MenuItem from '@material-ui/core/MenuItem';
 import { ModeDataContext } from '../helpers/LoginContext'
 
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: '25ch',
-        },
-    },
-}));
-
 export default function AddDevice() {
 
     useEffect(() => {
         getDevices().then(response => {
-            const items = response.flat().map(item => item.Id).filter(Number);
-            setDeviceIds(items);
-            const data = modeltypeData.map((item:Devices)=>item.BrandId).filter((item: any, i:any, ar:any) => ar.indexOf(item) === i);
-            setTempBrandIds(data);
+            const deviceIds = response.flat().map(item => item.Id).filter(Number);
+            setDeviceIds(deviceIds);
+            const disntinctBrandIds = modeltypeData.map((item: Devices) => item.BrandId).filter((item: any, i: any, ar: any) => ar.indexOf(item) === i);
+            setTempBrandIds(disntinctBrandIds);
         })
-
-      
         return () => {
-
         }
     }, [])
 
-    const classes = useStyles();
     const [brandId, setBrandId] = React.useState("");
     const [name, setName] = React.useState("");
     const [typeId, setTypeId] = React.useState(0);
     const [comment, setComment] = React.useState("");
     const [deviceIds, setDeviceIds] = React.useState<number[]>([]);
-    const [tempBrandIds,setTempBrandIds] = React.useState([]);
+    const [tempBrandIds, setTempBrandIds] = React.useState([]);
+
     const { modeltypeData, setModelTypeData } = useContext(ModeDataContext);
     const handleSubmit = (evt: any) => {
         evt.preventDefault();
         addDeviceApi(brandId, name, typeId, comment).then(response => {
-            if(response){
+            if (response) {
                 setBrandId("");
                 setName("");
                 setTypeId(0);
                 setComment("");
-                alert("Posted");
             }
         })
     }
@@ -80,7 +64,7 @@ export default function AddDevice() {
 
                 <Typography component="h1" variant="h5">
                     Add Device
-  </Typography>
+                </Typography>
                 <form noValidate onSubmit={handleSubmit} >
                     <TextField
                         fullWidth
@@ -134,7 +118,6 @@ export default function AddDevice() {
                         label="Comment"
                         type="text"
                         id="comment"
-                        autoComplete="current-password"
                         value={comment}
                         onChange={e => setComment(e.target.value)}
                     />
@@ -145,9 +128,8 @@ export default function AddDevice() {
                         variant="contained"
                         color="primary"
                         value="Submit"
-                    >
-                        Add
-    </Button>
+                    >   Add
+                   </Button>
                 </form>
             </div>
         </Container>
