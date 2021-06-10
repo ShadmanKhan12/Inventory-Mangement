@@ -1,4 +1,4 @@
-**This is simple Inventory Management web appliction create with ReactJs 17.0.2**
+**This is simple Inventory Management web appliction created with ReactJs 17.0.2 , (TypeScript)**
 
 It demonstates the use of axios HTTP client,React Hooks(Context Api, UseState, UseEffect, UseHistory), Material UI, react-router-dom.
 
