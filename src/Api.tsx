@@ -1,5 +1,8 @@
 import axios from 'axios'
 
+
+// todo put these types in respective namespace
+
 export type Devices = {
     Id: string,
     BrandId: string,
@@ -7,8 +10,6 @@ export type Devices = {
     TypeId: number,
     Comment: string,
     Description: string
-
-
 }
 
 export type ModelData = {
@@ -22,8 +23,6 @@ export type ModelData = {
     Status: string,
     GroupId : string,
     ProtocolOrder: string
-
-
 }
 
 export type DeviceType ={
@@ -37,12 +36,6 @@ export const logInApi = async(email: string,password:string) =>{
     localStorage.setItem('Token',result.data.access_token);
     return result;
 }
-
-// export const getApi = async() =>{
-//     const url= `api/users`;
-//     const result = await axios.get(url);
-//     console.log(result);
-// }
 
 export const modelTypeApi = async() => {
     const url = `api/overview/modeltype`;
