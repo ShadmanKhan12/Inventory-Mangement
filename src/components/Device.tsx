@@ -14,8 +14,7 @@ import {getModelData} from '../Api'
 import { Link, useHistory } from 'react-router-dom';
 import ModelPreviewModal from './ModelPreviewModal';
 import {ModeDataContext} from '../helpers/LoginContext'
-
-
+import Pagination from '../components/Paginate'
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -27,8 +26,14 @@ export default function Device() {
   const classes = useStyles();
   const [isClicked,setClickValue] = React.useState(false);
   const [modelType,setModelType] = React.useState<ModelType[]>([]);
-  
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(40);
   const {modeltypeData,setModelTypeData} = useContext(ModeDataContext);
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = modeltypeData.slice(indexOfFirstItem, indexOfLastItem);
+  const paginate = (pageNumber : any) => setCurrentPage(pageNumber);
   useEffect(() => {
 
     getAApi().then((response=>{
@@ -80,7 +85,7 @@ export default function Device() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {modeltypeData.map((item : Devices) => (
+          {currentItems.map((item : Devices) => (
             <TableRow key={item.Id}>
               <TableCell component="th" scope="device" onClick={()=>{
                 clickedData(item.BrandId,item.Name)
@@ -99,6 +104,7 @@ export default function Device() {
         </TableBody>
       </Table>
     </TableContainer>
+    <Pagination itemsPerPage={itemsPerPage} totalPosts={modeltypeData.length} paginate={paginate}></Pagination>
     {/* {isClicked && <ModelPreviewModal {...modelType}></ModelPreviewModal>} */}
       {/* <p>
         {modelType.map((item=>
