@@ -6,11 +6,11 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import Paper from '@material-ui/core/Paper';
-import { getAApi } from '../Api';
-import { Devices, ModelType } from '../Api';
+import { modelTypeApi } from '../Api';
+import { Devices, ModelData } from '../Api';
 import React, { useState, useEffect, useContext } from 'react';
 import { TableRow } from '@material-ui/core';
-import { getModelData } from '../Api';
+import { getModelDataApi } from '../Api';
 import { ModeDataContext } from '../helpers/LoginContext';
 import Pagination from './Paginate';
 
@@ -20,10 +20,10 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ModelData() {
+export default function ModelDataComp() {
   const classes = useStyles();
   const [isClicked, setClickValue] = React.useState(false);
-  const [modelType, setModelType] = React.useState<ModelType[]>([]);
+  const [modelType, setModelType] = React.useState<ModelData[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(40);
 
@@ -40,7 +40,7 @@ export default function ModelData() {
 
   useEffect(() => {
 
-    getAApi().then((modelTypeData => {
+    modelTypeApi().then((modelTypeData => {
       setModelTypeData(modelTypeData)
     }));
 
@@ -50,7 +50,7 @@ export default function ModelData() {
 
   const clickedData = (brandId: string, modelId: string) => {
     if (brandId && modelId) {
-      getModelData(brandId, modelId).then((response => {
+      getModelDataApi(brandId, modelId).then((response => {
         if (response.length > 0) {
           setModelType(response);
           setClickValue(true);

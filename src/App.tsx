@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import NavBar from './components/NavBar';
-import ModelData from './components/Model Data';
+import ModelDataComp from './components/Model Data';
 import LoginForm from './components/LoginForm';
 import axios from 'axios'
 import Home from './components/Home';
@@ -35,7 +35,7 @@ function App() {
             <ModeDataContext.Provider value={{ modeltypeData, setModelTypeData }}>
               <Route path="/" component={Home} exact />
               <Route path="/login" component={LoginForm} />
-              <Route path="/modeltype" component={ModelData} />
+              <Route path="/modeltype" component={ModelDataComp} />
               <Route path="/modeldata" component={ModelPreviewModal}></Route>
               <Route path="/devicemodel" component={AddDevice}></Route>
             </ModeDataContext.Provider>

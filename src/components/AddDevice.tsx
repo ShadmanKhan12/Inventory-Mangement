@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-import { addDeviceApi, DeviceType, getDevices, logInApi } from '../Api'
+import { addDeviceApi, getDevicesApi } from '../Api'
 import { useHistory } from 'react-router-dom';
 import { Redirect } from 'react-router'
 import Avatar from '@material-ui/core/Avatar';
@@ -20,7 +20,7 @@ import { ModeDataContext } from '../helpers/LoginContext'
 export default function AddDevice() {
 
     useEffect(() => {
-        getDevices().then(response => {
+        getDevicesApi().then(response => {
             const deviceIds = response.flat().map(item => item.Id).filter(Number);
             setDeviceIds(deviceIds);
             const disntinctBrandIds = modeltypeData.map((item: Devices) => item.BrandId).filter((item: any, i: any, ar: any) => ar.indexOf(item) === i);
