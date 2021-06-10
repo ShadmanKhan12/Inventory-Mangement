@@ -1,6 +1,4 @@
-import React from 'react'
-import { Switch, Route } from 'react-router-dom';
-import Form from '../components/Form'
+
 import { Jumbotron,Button } from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 
