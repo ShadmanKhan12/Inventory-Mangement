@@ -1,7 +1,35 @@
-This is simple Inventory Management web appliction create with ReactJs 17.0.2
-It demonstates the use of axios HTTP client,React Hooks(Context Api, UseState, UseEffect, UseHistory), Material UI, React Router.
+**This is simple Inventory Management web appliction create with ReactJs 17.0.2**
 
-The following functionlities can be performed on this app. Added some sceenshot for convenience.
+It demonstates the use of axios HTTP client,React Hooks(Context Api, UseState, UseEffect, UseHistory), Material UI, react-router-dom.
+
+This application has been developed keeping the scalability on mind. The best practices are:
+
+**Component Based** : Uses functional components. Each component is function specific and Reusable.
+Api Library: Api's are stored in a separate file. Components can import the necessary API to perfom necessary actions.
+
+**Stateful** : Uses React useState and Context API to reduce the complexity of passing props and chaning states. 
+
+**Axios**: Uses axios HTTP client for API operations and intercepting requests to perform and certain action and authorization. Axios at action works globally for authorization and HTTP operations.
+
+**Routing**:Uses react-router-dom for navigation.
+
+**Pagination**: Uses pagination for easy navigation.(Used a separate component Paginate.tsx for navigation. This can be re-used on demand.
+
+**TypeScript**: Uses TypeScript.
+
+**Design Choices**:
+The design has been kept simple. Used Material UI for the most part. Used several material components to achieve the UI. Some sceenshots are given below for reference.
+
+**Installation Guidline:**
+**git clone https://github.com/ShadmanKhan12/Inventory-Mangement.git**
+download node v10.16.3
+On the project directory containing src folder open command prompt and type "code ." (VsCode Has to be installed)
+On VsCode click on Terminal => New Termianl. 
+On the terminal run this command to "npm install"
+After installaion run "npm start"
+This will fire up the project on your default browser on port http://localhost:3000/ or any other available port.
+
+**The following core functionlities can be performed on this app. Added some sceenshot for convenience.**
 
 This is the landing page used Jumborton to highlight the text.
 
@@ -26,4 +54,8 @@ Product Type Id is a dropdown. The listed is fetched from /devicetype route.
 ![image](https://user-images.githubusercontent.com/71847918/121501100-b9be4f80-ca00-11eb-9bef-30f0e4a3aab8.png)
 ![image](https://user-images.githubusercontent.com/71847918/121501217-d78bb480-ca00-11eb-9eb5-a700120e671f.png)
 
+**To-Do's:**
+Display /modeldata/brandid/typeid on a modal. Since the amount of data is large. Will develop a technique to display those.
+Route Authentication/Protected Route.
+Scalabilty and Reusability Improvement.
 
