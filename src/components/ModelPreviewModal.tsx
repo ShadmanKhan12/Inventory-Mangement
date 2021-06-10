@@ -64,9 +64,6 @@ export default function ModelPreviewModal(Name:any,Brand: string) {
             <p id="transition-modal-description">react-transition-group animates me.</p>
             <p>{Name}</p>
             <p>{Brand}</p>
-            {/* {(modeltype.map((model) => (
-          <option key={model.Id} >{model.Name}</option>
-        ))} */}
           </div>
         </Fade>
       </Modal>

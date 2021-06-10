@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header() {
+export default function NavBar() {
   const classes = useStyles();
   const {isLoggedIn,setLogIn} = useContext(LoginContext);
 console.log("islofff",isLoggedIn)
