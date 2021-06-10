@@ -1,7 +1,7 @@
 import React ,{useState} from 'react';
 import './App.css';
 import Header from './components/Header';
-import Device from './components/Device';
+import ModelData from './components/Model Data';
 import Form from './components/Form';
 import axios from 'axios'
 import Home from './components/Home';
@@ -50,7 +50,7 @@ function App() {
         <ModeDataContext.Provider value={{modeltypeData,setModelTypeData}}>
       <Route path="/" component={Home} exact />
       <Route path="/login" component={Form} />
-      <Route path="/modeltype" component={Device} />
+      <Route path="/modeltype" component={ModelData} />
       <Route path="/modeldata" component={ModelPreviewModal}></Route>
       <Route path="/devicemodel" component={AddDevice}></Route>
       </ModeDataContext.Provider>
