@@ -14,7 +14,7 @@ import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
 import { Devices } from '../Api';
 import MenuItem from '@material-ui/core/MenuItem';
-import { ModeDataContext } from '../helpers/LoginContext'
+import { ModelDataContext } from '../helpers/ModelDataContext'
 
 
 export default function AddDevice() {
@@ -37,7 +37,7 @@ export default function AddDevice() {
     const [deviceIds, setDeviceIds] = React.useState<number[]>([]);
     const [tempBrandIds, setTempBrandIds] = React.useState([]);
 
-    const { modeltypeData, setModelTypeData } = useContext(ModeDataContext);
+    const { modeltypeData, setModelTypeData } = useContext(ModelDataContext);
     const handleSubmit = (evt: any) => {
         evt.preventDefault();
         addDeviceApi(brandId, name, typeId, comment).then(response => {

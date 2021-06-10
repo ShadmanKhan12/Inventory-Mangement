@@ -11,7 +11,8 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import AddDevice from './components/AddDevice'
 import InvalidURl from './components/InvalidURl'
-import { LoginContext, ModeDataContext } from './helpers/LoginContext'
+import { LoginContext} from './helpers/LoginContext'
+import {ModelDataContext} from './helpers/ModelDataContext'
 import { Devices } from './Api';
 
 function App() {
@@ -32,13 +33,13 @@ function App() {
         <Box pb={5}></Box>
         <Switch>
           <Container>
-            <ModeDataContext.Provider value={{ modeltypeData, setModelTypeData }}>
+            <ModelDataContext.Provider value={{ modeltypeData, setModelTypeData }}>
               <Route path="/" component={Home} exact />
               <Route path="/login" component={LoginForm} />
               <Route path="/modeltype" component={ModelDataComp} />
               <Route path="/modeldata" component={ModelPreviewModal}></Route>
               <Route path="/devicemodel" component={AddDevice}></Route>
-            </ModeDataContext.Provider>
+            </ModelDataContext.Provider>
           </Container>
         </Switch>
       </LoginContext.Provider>

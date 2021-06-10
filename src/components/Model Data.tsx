@@ -11,7 +11,7 @@ import { Devices, ModelData } from '../Api';
 import React, { useState, useEffect, useContext } from 'react';
 import { TableRow } from '@material-ui/core';
 import { getModelDataApi } from '../Api';
-import { ModeDataContext } from '../helpers/LoginContext';
+import { ModelDataContext } from '../helpers/ModelDataContext';
 import Pagination from './Paginate';
 
 const useStyles = makeStyles({
@@ -27,7 +27,7 @@ export default function ModelDataComp() {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(40);
 
-  const { modeltypeData, setModelTypeData } = useContext(ModeDataContext);
+  const { modeltypeData, setModelTypeData } = useContext(ModelDataContext);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
