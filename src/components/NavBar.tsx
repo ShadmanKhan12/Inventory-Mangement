@@ -28,11 +28,14 @@ const useStyles = makeStyles((theme) => ({
 export default function NavBar() {
   const classes = useStyles();
   const {isLoggedIn,setLogIn} = useContext(LoginContext);
-console.log("islofff",isLoggedIn)
+
+  const history = useHistory();
 
  const logout= () =>{
    localStorage.removeItem('Token');
    setLogIn(false);
+   history.push("/");
+   
  }
   return (
     <div className={classes.root}>
